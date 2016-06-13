@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet">
+		<link href="__PUBLIC__/css/site.css" rel="stylesheet">
+		<link href="__PUBLIC__/css/jq22.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>登录-选课系统</title>
+		<!-- 样式表文件 -->
+		</head>
+		<body>
+		<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">学生选课系统</a>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+		<div class="container">
+			<div class="row">
+			<div id="login" style="background-color: transparent;">
+<div class="wrapper">
+        <div class="login">
+            <form action="{:U('checklogin')}" method="post" class="container offset1 loginform">
+                <div id="owl-login">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+                <div class="pad">
+                    <input type="hidden" name="_csrf" value="9IAtUxV2CatyxHiK2LxzOsT6wtBE6h8BpzOmk=">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="email" class="control-label fa fa-envelope"></label>
+                            <input id="email" type="email" name="email" placeholder="邮箱" tabindex="1" autofocus="autofocus" class="form-control input-medium">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="password" class="control-label fa fa-asterisk"></label>
+                            <input id="password" type="password" name="password" placeholder="密码" tabindex="2" class="form-control input-medium">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" tabindex="4" class="btn btn-default btn-block">登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+			</div>
+		</div>
+		<script src="__PUBLIC__/js/jquery-1.11.3.min.js"></script>
+    	<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+		        $('#login #password').focus(function() {
+		            $('#owl-login').addClass('password');
+		        }).blur(function() {
+		            $('#owl-login').removeClass('password');
+		        });
+			});
+		</script>
