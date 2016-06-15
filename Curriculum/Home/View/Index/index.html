@@ -43,11 +43,11 @@
 		<script type="text/javascript">
 			$(function() {
 				$('table tbody tr').find('td').click(function(){
-					var index=($(this).index())-1;
-					var th=$(this).parents('tr').index();
-					console.log('x:'+index);
-					console.log('y:'+th);
-					$(this).addClass('td-color');
+					var x=($(this).index())-1;
+					var y=$(this).parents('tr').index();
+					console.log('x:'+x);
+					console.log('y:'+y);
+					$(this).addClass('td-color').text('坐标'+x+' , '+y);
 				});
 				
 			});

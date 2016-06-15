@@ -45,7 +45,7 @@
 </tr>
 </thead>
 <tbody>
-<tr><th>第一节</th><td class="td-color" data-info=1>彭老师 数据结构 实验大楼503</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>第一节</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>第二节</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>第三节</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>第四节</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -109,15 +109,16 @@
 				        var monday = new Date(time.getTime() - (minusDay * millisecond));
 				      //本周 周日  
 				        var sunday = new Date(monday.getTime() + (6 * millisecond));
+				        console.log(monday);
+				      	console.log(sunday);
 				        monday=timeStamp2String(monday,0);
 				        sunday=timeStamp2String(sunday,0);
-				        //console.log(monday);
-				      	//console.log(sunday);
 				      	var ms_str='<h4><span class="label label-default">'+monday+'</span>'+' ~ '+'<span class="label label-default">'+sunday+'</span></h4>';
 				      	$('#date-label').empty().append(ms_str);
 				});
 			});
 			function init(){
+				getclass();
 				var time=new Date();
 		    	//返回date是一周中的某一天  
 		    	var week = time.getDay();
@@ -149,6 +150,27 @@
 			    	return year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;
 			    else
 			    	return year + "-" + month + "-" + date;
-			}  
+			}
+			function getclass(){
+				$.ajax({
+					type:"post",
+					url:"{:U('getclass')}",
+					beforeSend : function() {
+						console.log(1);
+					},
+					success : function(data){
+						formatinfo(data);
+					},
+					complete : function() {
+						console.log(2);
+					}
+				});
+			}
+			function formatinfo(data){
+				$.each(data, function(k, v) {
+					var info=v.course_name+' '+v.tea_name+' '+v.classroom+' '+v.class_time;
+					$('table tbody tr').eq(v.y).find('td').eq(v.x).addClass('td-color').text(info);
+				});
+			}
 		</script>
 </block>

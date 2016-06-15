@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 标题 -->
-    <title>协会概况-四川省特种工程机械行业协会</title>
+    <title>首页-学生选课系统</title>
 <!--  <link rel="shortcut icon"href="/curriculum/Public/img/Common/admin.ico">-->     
 
 			 <!-- Custom Theme files -->
@@ -90,6 +90,7 @@
 <tr><th>第八节</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
+<input type="button" class="btn btn-default btn-block" value="提交" />
 </div>
 </div>
 
@@ -115,11 +116,12 @@
 		<script type="text/javascript">
 			$(function() {
 				$('table tbody tr').find('td').click(function(){
-					var index=($(this).index())-1;
-					var th=$(this).parents('tr').index();
-					console.log('x:'+index);
-					console.log('y:'+th);
-					$(this).addClass('td-color');
+					var x=($(this).index())-1;
+					var y=$(this).parents('tr').index();
+					console.log('x:'+x);
+					console.log('y:'+y);
+					$(this).addClass('td-color').text('坐标'+x+' , '+y);
 				});
+				
 			});
 		</script>
