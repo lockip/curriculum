@@ -10,7 +10,7 @@ return array(
     'DB_TYPE'=>'mysql',
     'DB_HOST'=>'localhost',
     'DB_USER'=>'root',
-    'DB_PWD'=>'root',
+    'DB_PWD'=>'5230178',
     'DB_NAME'=>'bsl',
     'DB_PORT'=>3306,
 //     'HTML_CACHE_ON'     =>    true, // 开启静态缓存

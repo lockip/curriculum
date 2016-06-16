@@ -27,6 +27,19 @@
 	background-color: #08c;
     color: #fff;
 }
+ .gridly {
+    position: relative;
+    width: 960px;
+  }
+  .brick.small {
+    width: 140px;
+    height: 140px;
+  }
+  .brick.large {
+    width: 300px;
+    height: 300px;
+  }
+
 </style>
 
 </head>
@@ -71,6 +84,7 @@
 
         
 <div class="container-full">
+
 <div>
             <div class="form-group " >
             <div class="col-md-4 control-label" style="text-align: center;">
@@ -135,6 +149,8 @@
 
 <script type="text/javascript" src="/curriculum/Public/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="/curriculum/Public/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
+<script type="text/javascript" src="/curriculum/Public/js/myTime.js" charset="UTF-8"></script>
 		<script type="text/javascript">
 			$(function() {
 				init();
@@ -144,11 +160,19 @@
 					var th=$(this).parents('tr').index();
 					console.log('x:'+index);
 					console.log('y:'+th);
-					var info=$(this).attr('data-info');
-					if(info==null)
-						$(this).addClass('td-click-color');
-					else
+					var key=$(this).attr('data-status');
+					switch(key){
+					case '1':
+						$(this).removeClass('td-click-color').removeAttr('data-status');
+						break;
+					case '2':
 						alert('该课程已经被选，请选择其它课程');
+						break;
+					default:
+						$(this).addClass('td-click-color').attr('data-status','1');
+						break;
+					}
+						
 				});
 				  fn.datetimepicker.dates['zh-CN'] = {
 				            days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
@@ -189,9 +213,14 @@
 				      	var ms_str='<h4><span class="label label-default">'+monday+'</span>'+' ~ '+'<span class="label label-default">'+sunday+'</span></h4>';
 				      	$('#date-label').empty().append(ms_str);
 				});
+				fn.datetimepicker().on('hide',function(data){
+					var time=data.date.toLocaleDateString();
+					getclass(time);
+					console.log(time);
+				});
 			});
 			function init(){
-				getclass();
+				getclass(null);
 				var time=new Date();
 		    	//返回date是一周中的某一天  
 		    	var week = time.getDay();
@@ -224,25 +253,31 @@
 			    else
 			    	return year + "-" + month + "-" + date;
 			}
-			function getclass(){
+			function getclass(time){
 				$.ajax({
 					type:"post",
 					url:"<?php echo U('getclass');?>",
+					data:{'time':time},
 					beforeSend : function() {
-						console.log(1);
+						$('table tbody').find('tr td').removeClass('td-click-color').removeAttr('data-status');
 					},
 					success : function(data){
+						console.log(data);
+						if(data!=0)
 						formatinfo(data);
 					},
 					complete : function() {
-						console.log(2);
 					}
 				});
 			}
 			function formatinfo(data){
 				$.each(data, function(k, v) {
 					var info=v.course_name+' '+v.tea_name+' '+v.classroom+' '+v.class_time;
-					$('table tbody tr').eq(v.y).find('td').eq(v.x).addClass('td-color').text(info);
+					$('table tbody tr').eq(v.y).find('td').eq(v.x).addClass('td-color').attr('data-status','2').text(info);
 				});
 			}
+			//时间戳转换
+			function getLocalTime(nS) {     
+       				return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");      
+    			}         
 		</script>

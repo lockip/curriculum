@@ -4,12 +4,14 @@ use Think\Controller;
 class IndexController extends Controller {
     public function index(){
         $this->display();
+        
     }
     public function getclass() {
         $time=I('time');
-        if($time==false){
+        if($time==null)
             $time=date('Y-m-d');
-        }
+        else
+            $time=$time=str_replace('/','-',$time);;
         $class=M('setclass');
         $where="'".$time."' between `start_time` and `end_time` ";
         $res=$class->where($where)->select();
