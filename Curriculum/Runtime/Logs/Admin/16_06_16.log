@@ -219,3 +219,80 @@ INFO: [ app_begin ] --END-- [ RunTime:0.000659s ]
 SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0160s ]
 SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0005s ]
 
+[ 2016-06-16T01:07:21+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000466s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000766s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0158s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0005s ]
+
+[ 2016-06-16T01:07:32+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000517s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000828s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0158s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0004s ]
+
+[ 2016-06-16T21:45:14+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000459s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000812s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0426s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0005s ]
+
+[ 2016-06-16T21:45:33+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000477s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000807s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0004s ]
+
+[ 2016-06-16T21:45:42+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000379s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000657s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0161s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0005s ]
+
+[ 2016-06-16T21:45:45+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000389s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000665s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0205s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0006s ]
+
+[ 2016-06-16T21:46:01+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000381s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000671s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0251s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0003s ]
+
+[ 2016-06-16T21:48:02+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000766s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0141s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0003s ]
+
+[ 2016-06-16T21:49:02+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000410s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000738s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0101s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0003s ]
+
+[ 2016-06-16T21:49:06+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000502s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000852s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0168s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0003s ]
+
+[ 2016-06-16T21:49:15+08:00 ] ::1 /curriculum/Admin/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000674s ]
+SQL: SHOW COLUMNS FROM `setclass` [ RunTime:0.0167s ]
+SQL: SELECT * FROM `setclass` WHERE ( '2016-06-16' between `start_time` and `end_time`  )  [ RunTime:0.0005s ]
+
