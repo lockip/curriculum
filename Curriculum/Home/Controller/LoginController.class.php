@@ -23,7 +23,10 @@ class LoginController extends Controller {
                 session('email',$res['username']);
                 session('uid',$res['id']);
                 $user->commit();
-                $this->success('登录成功',__APP__.'/Home/Index');
+                if($res['type']==0)
+                    $this->success('登录成功',__APP__.'/Home/Index');
+                else 
+                    $this->success('欢迎管理员回来',__APP__.'/Admin/Index');
             }else{
                 $user->rollback();
                 $this->error('账号和密码不匹配');

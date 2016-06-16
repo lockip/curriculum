@@ -12,25 +12,51 @@
 	background-color: #08c;
     color: #fff;
 }
+ .gridly {
+    position: relative;
+    width: 960px;
+  }
+  .brick.small {
+    width: 140px;
+    height: 140px;
+  }
+  .brick.large {
+    width: 300px;
+    height: 300px;
+  }
+
 </style>
 </block>
 <block name="main">
 <div class="container-full">
+
 <div>
             <div class="form-group " >
             <div class="col-md-4 control-label" style="text-align: center;">
                 <label id="date-label" class="control-label"></label>
+                <div id="d_loading" style="display:none;"><span>加载中...</span><img src="__PUBLIC__/images/progress.gif" /></div>
                 </div>
+
                 <div class="input-group date form_datetime col-md-4 clearfix" >
-                    <input class="form-control" id="text-date" size="16" type="text" value="2016-06-15" placeholder="选择时间" readonly >
+                    <input class="form-control" id="text-date" size="16" type="text" value="{$time}" placeholder="选择时间" readonly >
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
+                
                 <div class="col-md-4">
                 
-                </div>
                 
+                </div>
             </div>
+            <div class="panel panel-default">
+  				<div class="panel-body">
+  				<volist name="list" id="vo">
+			<label class="radio-inline" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover"  data-content="{$vo.course_name}  {$vo.tea_name} {$vo.classroom} {$vo.class_time}">
+  			<input type="radio" name="btn-redio" id="redio{$i}" value="{$i}" data-id="{$vo.id}" data-course-name="{$vo.course_name}" data-tea-name="{$vo.tea_name}" data-classroom="{$vo.classroom}" data-class-time="{$vo.class_time}" <if condition="$i eq 1">checked </if>> {$vo.tea_name}
+			</label>
+			</volist>
+			</div>
+			  </div>
 <table class="table table-bordered">
 <thead>
 <tr>
@@ -55,27 +81,66 @@
 <tr><th>第八节</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
-<input type="button" class="btn btn-default btn-block" value="提交" />
+<input type="button" id="btn_save" class="btn btn-default btn-block" value="提交" />
 </div>
 </div>
 </block>
 <block name="js">
 <script type="text/javascript" src="__PUBLIC__/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="__PUBLIC__/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
+<script type="text/javascript" src="__PUBLIC__/js/myTime.js" charset="UTF-8"></script>
 		<script type="text/javascript">
 			$(function() {
+				$('[data-toggle="popover"]').popover();
 				init();
 				var fn=$(".form_datetime");
+				$('#btn_save').click(function(){
+					$(this).button('loading');
+					$('table tbody').find('td').each(function(){
+						var a=$(this).attr('data-status');
+						if(a==1){
+							$classid=$(this).attr('data-id');
+							$x=$(this).attr('data-x');
+							$y=$(this).attr('data-y');
+							$time=$('#text-date').val();
+							adddata($classid,$time,$x,$y);
+						}
+					});
+					$(this).button('reset');
+				});
 				$('table tbody tr').find('td').click(function(){
-					var index=($(this).index())-1;
-					var th=$(this).parents('tr').index();
-					console.log('x:'+index);
-					console.log('y:'+th);
-					var info=$(this).attr('data-info');
-					if(info==null)
-						$(this).addClass('td-click-color');
-					else
+					var x=($(this).index())-1;
+					var y=$(this).parents('tr').index();
+					var rediocheck=$('input[name=btn-redio]:checked');
+					console.log('x:'+x);
+					console.log('y:'+y);
+					var key=$(this).attr('data-status');
+					switch(key){
+					case '1':
+						rediocheck.removeAttr("checked data-x data-y").parent().prev().show('snow').children().prop("checked",true);;
+						//console.log(rediocheck.removeAttr("checked").parent().prev().children());
+						$(this).removeClass('td-click-color').removeAttr('data-status').empty();
+						break;
+					case '2':
 						alert('该课程已经被选，请选择其它课程');
+						break;
+					default:
+						if(rediocheck.is(":hidden")){
+							alert('请先取消后在添加其他课程');
+							break;
+						}
+						$classid=rediocheck.attr('data-id');
+						$name=rediocheck.attr('data-course-name')+' ';
+						$teaname=rediocheck.attr('data-tea-name')+' ';
+						$classroom=rediocheck.attr('data-classroom')+' ';
+						$classtime=rediocheck.attr('data-class-time')+' ';
+						rediocheck.removeAttr("checked data-x data-y").parent().hide('snow');
+						rediocheck.parent().next().children().prop("checked",true);
+						$(this).addClass('td-click-color').attr({'data-status':'1','data-id':$classid,'data-x':x,'data-y':y}).text($name+$teaname+$classroom+$classtime);
+						break;
+					}
+						
 				});
 				  fn.datetimepicker.dates['zh-CN'] = {
 				            days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
@@ -116,9 +181,14 @@
 				      	var ms_str='<h4><span class="label label-default">'+monday+'</span>'+' ~ '+'<span class="label label-default">'+sunday+'</span></h4>';
 				      	$('#date-label').empty().append(ms_str);
 				});
+				fn.datetimepicker().on('hide',function(data){
+					var time=data.date.toLocaleDateString();
+					getclass(time);
+					console.log(time);
+				});
 			});
 			function init(){
-				getclass();
+				getclass(null);
 				var time=new Date();
 		    	//返回date是一周中的某一天  
 		    	var week = time.getDay();
@@ -151,26 +221,47 @@
 			    else
 			    	return year + "-" + month + "-" + date;
 			}
-			function getclass(){
+			function getclass(time){
 				$.ajax({
 					type:"post",
 					url:"{:U('getclass')}",
+					data:{'time':time},
 					beforeSend : function() {
-						console.log(1);
+						$('#d_loading').show();
+						$('table tbody').find('tr td').removeClass('td-color').empty();
 					},
 					success : function(data){
+						console.log(data);
+						if(data!=0)
 						formatinfo(data);
 					},
 					complete : function() {
-						console.log(2);
+						$('#d_loading').hide();
 					}
+				});
+			}
+			function adddata(id,time,x,y){
+				$.ajax({
+				type:"post",
+				url:"{:U('addinfo')}",
+				data:{'time':time,'id':id,'x':x,'y':y},
+				beforeSend : function() {
+					console.log(id+time+x+y);
+				},
+				success:function(data){
+					console.log(data);
+				}
 				});
 			}
 			function formatinfo(data){
 				$.each(data, function(k, v) {
-					var info=v.course_name+' '+v.tea_name+' '+v.classroom+' '+v.class_time;
-					$('table tbody tr').eq(v.y).find('td').eq(v.x).addClass('td-color').text(info);
+					var info='# '+v.id+' '+v.course_name+' '+v.tea_name+' '+v.classroom+' '+v.class_time;
+					$('table tbody tr').eq(v.y).find('td').eq(v.x).addClass('td-color').attr({'data-status':'2','data-id':v.id}).text(info);
 				});
 			}
+			//时间戳转换
+			function getLocalTime(nS) {     
+       				return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");      
+    			}         
 		</script>
 </block>

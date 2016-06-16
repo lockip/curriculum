@@ -1,0 +1,63 @@
+[ 2016-06-17T01:45:24+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000452s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000738s ]
+ERR: 非法操作:getclass
+
+[ 2016-06-17T01:45:28+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000460s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000780s ]
+ERR: 非法操作:getclass
+
+[ 2016-06-17T01:45:44+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000398s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000701s ]
+ERR: 非法操作:getclass
+
+[ 2016-06-17T01:47:21+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000371s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000634s ]
+ERR: 非法操作:getclass
+
+[ 2016-06-17T01:47:57+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000487s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000794s ]
+ERR: 非法操作:getclass
+
+[ 2016-06-17T01:48:41+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000772s ]
+ERR: 非法操作:getclass
+
+[ 2016-06-17T02:02:17+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000389s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000659s ]
+
+[ 2016-06-17T02:03:04+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000389s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000661s ]
+
+[ 2016-06-17T02:03:29+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000392s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000659s ]
+
+[ 2016-06-17T02:04:16+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000426s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000734s ]
+
+[ 2016-06-17T02:09:40+08:00 ] ::1 /curriculum/Home/Index/getclass.shtml
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000390s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000659s ]
+SQL: SHOW COLUMNS FROM `selectinfo` [ RunTime:0.0178s ]
+SQL: SELECT * FROM `selectinfo` WHERE `uid` = 1 AND `classid` = 1  [ RunTime:0.0004s ]
+
